@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Jersey+20&display=swap');
+
+
+#qrcontainer {
+  font-family: "Jersey 20", sans-serif;
+
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#qrcontainer button, #qrcontainer input {
+    font-size:2rem;
+  font-family: "Jersey 20", sans-serif;
+    color:black;
+}

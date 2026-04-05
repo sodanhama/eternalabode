@@ -1,8 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Jersey+20&display=swap');
+
+header {
+    position:fixed;
+    text-align: left;
+    width:100%;
+    top:0;
+}
+
+header:hover {
+    cursor: pointer;
+}
 
 body {
-    font-family: 'Alata', sans-serif;
+  font-family: "Jersey 20", sans-serif;
     color: whitesmoke;
     background-image: url("./assets/background.png");
+    cursor: crosshair;
     text-align: center;
+    background-size: cover;
+}
+
+#qr, #url, #whitenoise {
+    color:silver;
+    cursor: pointer;
 }

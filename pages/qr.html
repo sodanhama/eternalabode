@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="./qr.css">
+</head>
+<body>
+    <header>
+    <h1 onclick="window.location='../index.html'">Eternal Abode</h1>
+    </header>
+    <br>
+    <h1>QR Code Generator</h1>  
+    <div id="qrcontainer">
+        <input type="text" placeholder="URL">
+        <br>
+        <br>
+
+        <button>Generate QR Code</button>
+        <br>
+        <br>
+        <div id="imgbox">
+            <img src="" alt="QR Code" id="qrimg">
+        </div>
+    </div>
+    <script>
+        const input = document.querySelector("#qrcontainer input");
+        const button = document.querySelector("#qrcontainer button");
+        const img = document.querySelector("#qrimg");
+
+        button.addEventListener("click", () => {
+            const url = input.value;
+            if (url) {
+                img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
+            }
+        });s
+    </script>
+</body>
+</html>
