@@ -1,18 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata&family=Jersey+20&display=swap');
 
-
 * {
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-        overflow: hidden;
-}
-
-#canvas {
     background-color: #444545;
-
 }
-
 
 header {
     position:fixed;
@@ -21,9 +11,4 @@ header {
     top:0;
     font-family: "Jersey 20", sans-serif;
     color: #F0E7D8;
-}
-
-
-header:hover {
-    cursor: pointer;
 }

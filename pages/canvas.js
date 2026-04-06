@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
         if (!drawing) return;
         ctx.lineWidth = 10;
         ctx.lineCap = 'round';
-        ctx.strokeStyle = 'silver';
+        ctx.strokeStyle = '#AB9B96';
         ctx.lineTo(e.clientX, e.clientY);
         ctx.stroke();
         ctx.beginPath();
