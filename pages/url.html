@@ -15,7 +15,37 @@
     <h1>URL Shortener</h1>
     <div id="urlcontainer">
         <input type="text" placeholder="URL">
+        <br>
+        <br>
         <button>Shorten URL</button>
+        <br>
+        <br>
+        <div id="urlbox">
+            <p id="url"></p>
+        </div>
     </div>
+    <script>
+        const input = document.querySelector("#urlcontainer input");
+        const button = document.querySelector("#urlcontainer button");
+        const urlDisplay = document.querySelector("#url");
+
+        button.addEventListener("click", () => {
+            const url = input.value;
+            if (url) {
+                fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(url)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.ok) {
+                            urlDisplay.textContent = data.result.full_short_link;
+                        } else {
+                            urlDisplay.textContent = "Error shortening URL.";
+                        }
+                    })
+                    .catch(() => {
+                        urlDisplay.textContent = "Error shortening URL.";
+                    });
+            }
+        });
+    </script>
 </body>
 </html>
