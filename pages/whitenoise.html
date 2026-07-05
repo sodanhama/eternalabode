@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Noise Generator</title>
+    <link rel="stylesheet" href="../styles.css"> 
+</head>
+<body>
+    <header>
+    <h1 onclick="window.location='../index.html'">Eternal Abode</h1>
+    </header>
+    <br>
+    <h1>White Noise Generator</h1>
+    <div id="whitenoisecontainer">
+        <br>
+        <br>
+        <button id="toggle">Play</button>
+        <br>
+        <label>Volume <input id="volume" type="range" min="0" max="1" step="0.1" value="0.5"></label>
+    </div>
+
+    <script>
+        let ctx, source, gainNode, playing = false;
+        
+        function makeNoiseBuffer() {
+            const bufferSize = ctx.sampleRate * 2
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        }
+    </script>
+</body>
+</html>
