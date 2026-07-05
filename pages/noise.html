@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Generator</title>
+    <link rel="stylesheet" href="../styles.css"> 
+</head>
+<body>
+    <header>
+    <h1 onclick="window.location='../index.html'">Eternal Abode</h1>
+    </header>
+    <br>
+    <h1>Noise Generator</h1>
+    <div id="whitenoisecontainer">
+        <button id="toggle">Toggle</button>
+        <label>Volume <input id="volume" type="range" min="0" max="1" step="0.1" value="0.5"></label>
+    </div>
+
+    <script>
+    let ctx, source, gainNode, playing = false;
+    
+    function makeNoiseBuffer() {
+    const bufferSize = ctx.sampleRate * 2;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+    }
+    return buffer;
+    }
+    
+    document.getElementById('toggle').addEventListener('click', () => {
+    if (!playing) {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        source = ctx.createBufferSource();
+        source.buffer = makeNoiseBuffer();
+        source.loop = true;
+    
+        gainNode = ctx.createGain();
+        gainNode.gain.value = document.getElementById('volume').value;
+    
+        source.connect(gainNode).connect(ctx.destination);
+        source.start(0);
+    
+        document.getElementById('toggle').textContent = '⏸ Stop';
+        playing = true;
+    } else {
+        source.stop();
+        ctx.close();
+        document.getElementById('toggle').textContent = '▶ Play';
+        playing = false;
+    }
+    });
+    
+    document.getElementById('volume').addEventListener('input', (e) => {
+    if (gainNode) gainNode.gain.value = e.target.value;
+    });
+    </script>
+</body>
+</html>
