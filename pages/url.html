@@ -21,7 +21,7 @@
         <br>
         <br>
         <div id="urlbox">
-            <p id="url"></p>
+            <a id="url" target="_blank"></a>
         </div>
     </div>
     <script>
@@ -32,13 +32,14 @@
         button.addEventListener("click", () => {
             const url = input.value;
             if (url) {
-                fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(url)}`)
+                fetch(`https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`)
                     .then(response => response.json())
                     .then(data => {
-                        if (data.ok) {
-                            urlDisplay.textContent = data.result.full_short_link;
+                        if (data.shorturl) {
+                            urlDisplay.href = data.shorturl;
+                            urlDisplay.textContent = data.shorturl;
                         } else {
-                            urlDisplay.textContent = "Error shortening URL.";
+                            urlDisplay.textContent = "Error: " + (data.errormessage || "shortening failed.");
                         }
                     })
                     .catch(() => {
